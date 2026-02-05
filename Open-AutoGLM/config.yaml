@@ -1,0 +1,79 @@
+# Open-AutoGLM API 配置文件
+# 请根据你使用的服务提供商配置相应的参数
+
+# ===========================================
+# 模型 API 配置
+# ===========================================
+
+# 选择你要使用的服务提供商（取消注释对应的配置）
+
+# 方案 1: 智谱 BigModel（推荐 - 中文优化）
+model:
+  base_url: "https://open.bigmodel.cn/api/paas/v4"
+  model_name: "autoglm-phone"
+  api_key: "4e331248e2af418fb76bdc6dda2ae27c.G9DY4DmzdANiJ28A"  # 请替换为你的 API Key
+
+# 方案 2: ModelScope 魔搭社区
+# model:
+#   base_url: "https://api-inference.modelscope.cn/v1"
+#   model_name: "ZhipuAI/AutoGLM-Phone-9B"
+#   api_key: "your-modelscope-api-key-here"
+
+# 方案 3: 本地部署模型
+# model:
+#   base_url: "http://localhost:8000/v1"
+#   model_name: "autoglm-phone-9b"
+#   api_key: "EMPTY"
+
+# 方案 4: z.ai（英文场景）
+# model:
+#   base_url: "https://api.z.ai/api/paas/v4"
+#   model_name: "autoglm-phone-multilingual"
+#   api_key: "your-z-ai-api-key-here"
+
+# 方案 5: Novita AI
+# model:
+#   base_url: "https://api.novita.ai/openai"
+#   model_name: "zai-org/autoglm-phone-9b-multilingual"
+#   api_key: "your-novita-api-key-here"
+
+# ===========================================
+# 模型参数配置（可选）
+# ===========================================
+model_params:
+  max_tokens: 3000              # 最大输出 token 数
+  temperature: 0.1              # 采样温度 (0.0-1.0)
+  frequency_penalty: 0.2        # 频率惩罚 (0.0-2.0)
+
+# ===========================================
+# Agent 配置
+# ===========================================
+agent:
+  max_steps: 100                # 每个任务最大步数
+  device_id: null               # 设备 ID（null 为自动检测）
+  device_type: "adb"            # 设备类型: adb(Android) / hdc(鸿蒙) / ios(iPhone)
+  lang: "cn"                    # 语言: cn(中文) / en(英文)
+  verbose: true                 # 是否显示详细输出（包括思考过程）
+  save_screenshots: true        # 是否保存每步操作的截图
+  screenshot_dir: "./screenshots"  # 截图保存目录
+
+# ===========================================
+# iOS 设备配置（仅当 device_type 为 ios 时需要）
+# ===========================================
+ios:
+  wda_url: "http://localhost:8100"  # WebDriverAgent URL
+  # WiFi 连接示例: "http://192.168.1.100:8100"
+
+# ===========================================
+# 远程调试配置（可选）
+# ===========================================
+# remote:
+#   connect_address: "192.168.1.100:5555"  # 远程设备地址
+
+# ===========================================
+# 申请 API Key 的链接
+# ===========================================
+# 智谱 BigModel: https://open.bigmodel.cn/
+# ModelScope: https://modelscope.cn/
+# z.ai: https://z.ai/
+# Novita AI: https://novita.ai/
